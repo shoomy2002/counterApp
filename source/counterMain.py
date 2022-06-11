@@ -10,11 +10,8 @@ config = configparser.ConfigParser()
 config.read('config.ini')
 
 root = tk.Tk()
-winx = int(config.get('USERSETTING', 'winx'))
-winy = int(config.get('USERSETTING', 'winy'))
-posx = int(config.get('USERSETTING', 'posx'))
-posy = int(config.get('USERSETTING', 'posy'))
-root.geometry(f'{winx}x{winy}+{posx}+{posy}')
+winpos = config.get('USERSETTING', 'winpos')
+root.geometry(winpos)
 root.minsize(320, 200)
 root.title('カウンター')
 
@@ -31,7 +28,7 @@ frameSpace = tk.Frame(scroll.ScrollableFrame(root).scrollable_frame)
 frameSpace.pack(anchor='w', pady=15)
 inputdata.inData(frameSpace)
 
-root.bind("<Configure>", resize.rescale_objects)
+# root.bind("<Configure>", resize.rescale_objects)
 menu.make_menu(root)
 
 def callback():

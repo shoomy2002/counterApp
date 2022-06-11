@@ -17,12 +17,8 @@ def open_file(event = None):
 def save(rootFrame, event = None): outputdata.outData(rootFrame)
 
 def exit(rootFrame):
-    winx, other = rootFrame.geometry().split("x")
-    winy, posx, posy = other.split("+")
-    config.set('USERSETTING', 'winx', winx)
-    config.set('USERSETTING', 'winy', winy)
-    config.set('USERSETTING', 'posx', posx)
-    config.set('USERSETTING', 'posy', posy)
+    winpos = rootFrame.geometry()
+    config.set('USERSETTING', 'winpos', winpos)
     with open('config.ini', 'w') as f:
         config.write(f)
     rootFrame.destroy()
